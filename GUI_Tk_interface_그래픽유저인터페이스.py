@@ -233,7 +233,7 @@ window.mainloop()
 
 
 
-
+'''
 # 9. 마우스와 키보드로 이벤트 관리하기         ( 더블클릭할때 작동 예제 )
 
 from tkinter import *
@@ -243,13 +243,81 @@ def click(event):
 
 def quit(event):
     print("종료합니다")
-    import sys;sys.exit()
+    import sys;sys.exit()                               # 여러 개의 구문을 한줄에 쓸때 ;을 사용해야 함.
 
 window = Tk()
 widget = Button(window, text = "더블 클릭하시오!!")
 widget.pack()
-widget.bind("<Button-1>", click)
-widget.bind("<Double-Button-1>", quit)
+widget.bind("<Button-1>", click)                        # <Botton-1> : 마우스 왼쪽 버튼을 눌리면 실행 되는 버튼
+widget.bind("<Double-Button-1>", quit)                  # <Botton-2> : 마우스 중간 휠
+                                                        # <Bottom-3> : 마우스 오른쪽 버튼 누르면 실행
+window.mainloop()                                       #  click     : 이벤트가 발생하면 call back하는 함수.
+                                                        #  quit      : event가 발생하면 동작하는 call back함수
+# 마우스 이벤트 그외 것들.
+#   B1-Motion           : 마우스의 Button-1/2/3  눌린 채로 움직일 때 사용.
+#   ButtonRelease-1     : 버튼을 손에서 땔때 발생
+#   Enter               : 마우스 포인터가 위젯으로 진입할 때 적용
+#   Leave               : 마우스 포인터가 위젯으로 떠나면 적용
+
+# 키보드 이벤트
+#   FocusIn             : 키보드의 포커스가 위젯으로 이동할 때
+#   FocusOut            : 키보드의 포커스가 다른 위젯으로 이동할 때
+#   Return              : 엔터키를 치면
+#   Key                 : 아무키나 누를때 발생
+#   Shift-Up            : 쉬프트키와 윗쪽 키를 동시에 누를때
+#   Configure           : 위젯의 크기나 위치가 변경될 때
+'''
+
+
+
+
+
+
+# 10. 위젯 배치하기 (계산기 예제)
+from tkinter import *
+
+window = Tk()
+
+Button(window, font = ('Rockwell',10),text = '←', width = 4, height = 2).grid(row = 0, column = 1)
+Button(window, font = ('Rockwell',10),text = 'CE', width = 4, height = 2).grid(row = 0, column = 2)
+Button(window, font = ('Rockwell',10),text = 'C', width = 4, height = 2).grid(row = 0, column = 3)
+Button(window, font = ('Rockwell',10),text = '+/-', width = 4, height = 2).grid(row = 0, column = 4)
+Button(window, font = ('Rockwell',10),text = '√', width = 4, height = 2).grid(row = 0, column = 5)
+
+Button(window, font = ('Rockwell',10),text = '7', width = 4, height = 2).grid(row = 1, column = 1)
+Button(window, font = ('Rockwell',10),text = '8', width = 4, height = 2).grid(row = 1, column = 2)
+Button(window, font = ('Rockwell',10),text = '9', width = 4, height = 2).grid(row = 1, column = 3)
+Button(window, font = ('Rockwell',10),text = '*', width = 4, height = 2).grid(row = 1, column = 4)
+Button(window, font = ('Rockwell',10),text = '%', width = 4, height = 2).grid(row = 1, column = 5)
+
+Button(window, font = ('Rockwell',10),text = '4', width = 4, height = 2).grid(row = 2, column = 1)
+Button(window, font = ('Rockwell',10),text = '5', width = 4, height = 2).grid(row = 2, column = 2)
+Button(window, font = ('Rockwell',10),text = '6', width = 4, height = 2).grid(row = 2, column = 3)
+Button(window, font = ('Rockwell',10),text = '/', width = 4, height = 2).grid(row = 2, column = 4)
+Button(window, font = ('Rockwell',10),text = '', width = 4, height = 2).grid(row = 2, column = 5)
+
+Button(window, font = ('Rockwell',10),text = '1', width = 4, height = 2).grid(row = 3, column = 1)
+Button(window, font = ('Rockwell',10),text = '2', width = 4, height = 2).grid(row = 3, column = 2)
+Button(window, font = ('Rockwell',10),text = '3', width = 4, height = 2).grid(row = 3, column = 3)
+Button(window, font = ('Rockwell',10),text = '-', width = 4, height = 2).grid(row = 3, column = 4)
+Button(window, font = ('Rockwell',10),text = '', width = 4, height = 2).grid(row = 3, column = 5)
+
+Button(window, font = ('Rockwell',10),text = '0', width = 4, height = 2).grid(row = 4, column = 1)
+Button(window, font = ('Rockwell',10),text = '.', width = 4, height = 2).grid(row = 4, column = 2)
+Button(window, font = ('Rockwell',10),text = '1/x', width = 4, height = 2).grid(row = 4, column = 3)
+Button(window, font = ('Rockwell',10),text = '+', width = 4, height = 2).grid(row = 4, column = 4)
+Button(window, font = ('Rockwell',10),text = '=', width = 4, height = 2).grid(row = 4, column = 5)
 
 window.mainloop()
+
+#   좌표
+#   0,0  0,1  0,2  0,3  0,4
+#   1,0  1,1  1,2  1,3  1,4
+#   2,0  2,1  2,2  2,3  2,4
+#   3,0  3,1  3,2  3,3  3,4
+#   4,0  4,1  4,2  4,3  4,4
+
+
+
+
 
